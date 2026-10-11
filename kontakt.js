@@ -34,7 +34,7 @@
   }));
   text.addEventListener('input', zaehlen);
 
-  const mailto = (thema, msg) => 'mailto:info@bookery-app.de?subject=' + encodeURIComponent('bookery: ' + themen[thema]) +
+  const mailto = (thema, msg) => 'mailto:support@bookery-app.de?subject=' + encodeURIComponent('bookery: ' + themen[thema]) +
     '&body=' + encodeURIComponent(msg);
 
   form.addEventListener('submit', async ev => {
