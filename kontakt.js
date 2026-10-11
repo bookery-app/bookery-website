@@ -1,4 +1,4 @@
-// Kontaktformular: schickt die Nachricht an den Server, der sie an info@bookery-app.de mailt (api/testen.py).
+// Kontaktformular: schickt die Nachricht an den Server, der sie an support@bookery-app.de mailt (api/testen.py).
 // Klappt das nicht, bietet der Hinweis eine vorbereitete E-Mail mit demselben Text an.
 (() => {
   const form = document.getElementById('kontakt');
