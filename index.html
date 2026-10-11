@@ -220,6 +220,40 @@ h2 em, h1 em { font-style: italic; color: var(--accent); }
 .mini-umzug { gap: 2px; }
 .mini-umzug span { color: var(--muted); }
 .mini-umzug b { font: 400 1rem/1 var(--serif); color: var(--ink); }
+/* Jahresrückblick wie die Story in der App: hochkant, Fortschrittsstriche oben, Jahr in der Mitte. */
+.mini-jahr { grid-auto-flow: column; align-items: center; gap: 10px; }
+.mini-jahr small { white-space: normal; line-height: 1.25; text-align: left; }
+.mini-jahr .story { position: relative; width: 40px; height: 60px; border-radius: 9px; display: grid; place-items: center;
+  background: linear-gradient(165deg, #2F7A72, #163D3A); box-shadow: 0 3px 8px -3px rgb(0 0 0 / .35);
+  font: 400 .82rem/1 var(--serif); color: #fff; }
+.mini-jahr .story::before { content: ""; position: absolute; top: 5px; left: 5px; right: 5px; height: 2px; border-radius: 1px;
+  background: linear-gradient(90deg, #fff 0 9px, transparent 9px 11px, #fff 11px 20px, transparent 20px 22px, rgb(255 255 255 / .35) 22px); }
+/* Notiz: Anführungszeichen und zwei Zeilen, wie ein Zettel im Buch. */
+.mini-notiz { gap: 6px; }
+.mini-notiz .zettel { position: relative; width: 78px; padding: 9px 10px 10px 24px; border-radius: 8px; background: var(--chip); display: grid; gap: 5px; }
+.mini-notiz .zettel::before { content: "“"; position: absolute; left: 7px; top: 2px; font: 400 1.6rem/1 var(--serif); color: var(--accent); }
+.mini-notiz .zettel i { display: block; height: 3px; border-radius: 2px; background: color-mix(in srgb, var(--muted) 45%, transparent); }
+.mini-notiz .zettel i + i { width: 62%; }
+/* Buchreihe: drei Buchrücken mit Bandnummer. */
+.mini-reihe .baende { display: flex; align-items: end; gap: 3px; }
+.mini-reihe .baende i { width: 17px; height: 42px; border-radius: 3px; display: grid; place-items: end center; padding-bottom: 5px;
+  font: 600 .62rem/1 var(--sans); font-style: normal; color: rgb(255 255 255 / .92); background: #3F6B4A; }
+.mini-reihe .baende i:nth-child(2) { height: 46px; background: #2A6B66; }
+.mini-reihe .baende i:nth-child(3) { height: 40px; background: #B5654A; }
+/* Empfehlungen: drei Cover, das mittlere vorn. */
+.mini-tipp .cover3 { display: flex; align-items: center; }
+.mini-tipp .cover3 i { width: 22px; height: 32px; border-radius: 3px; background: #C0905F; box-shadow: 0 2px 5px -2px rgb(0 0 0 / .4); }
+.mini-tipp .cover3 i:nth-child(2) { width: 27px; height: 40px; margin: 0 -5px; position: relative; background: #2A6B66; }
+.mini-tipp .cover3 i:nth-child(3) { background: #7C5A86; }
+/* Abgebrochen: Kreis mit X wie der Knopf in der App. */
+.mini-stopp svg { width: 30px; height: 30px; fill: none; stroke: var(--muted); stroke-width: 1.8; stroke-linecap: round; }
+/* Weiterschicken: Sprechblase mit Cover und Titelzeilen. */
+.mini-teilen .blase { position: relative; display: grid; grid-template-columns: 16px 1fr; align-items: center; gap: 7px; width: 78px; padding: 8px 10px;
+  border-radius: 14px 14px 14px 4px; background: var(--accent); }
+.mini-teilen .blase b { width: 16px; height: 24px; border-radius: 2px; background: #EBD39B; }
+.mini-teilen .blase span { display: grid; gap: 4px; }
+.mini-teilen .blase span i { display: block; height: 3px; border-radius: 2px; background: var(--card); opacity: .95; }
+.mini-teilen .blase span i + i { width: 60%; opacity: .6; }
 /* Backup-Datei wie in der Dateien-App: Blatt mit Eselsohr, bookery-Logo darauf, echte Endung. */
 .mini-backup { gap: 6px; }
 .mini-backup .docwrap { filter: drop-shadow(0 1px 1px rgb(0 0 0 / .12)) drop-shadow(0 3px 6px rgb(0 0 0 / .1)); }
@@ -548,14 +582,20 @@ footer small { color: var(--muted); }
         <p>Keine unnötigen Funktionen. Und du entscheidest, was du brauchst.</p>
       </div>
       <ul class="contents reveal">
-        <li><div class="mini mini-prog" aria-hidden="true"><span class="bar"><i></i></span><small>Seite 214 von 320</small></div><div><h3>Fortschritt im Blick</h3><p>Seite eintragen, bookery rechnet mit. E&#8209;Books und Hörbücher zählen in Prozent.</p><span class="formats">Buch · Kindle · tolino · Kobo · Audible · Spotify</span></div></li>
+        <li><div class="mini mini-prog" aria-hidden="true"><span class="bar"><i></i></span><small>Seite 214 von 320</small></div><div><h3>Fortschritt im Blick</h3><p>Seite eintragen, bookery rechnet mit. E&#8209;Books und Hörbücher zählen in Prozent – Hörbücher öffnest du direkt in Audible oder Spotify.</p><span class="formats">Buch · Kindle · tolino · Kobo · Audible · Spotify</span></div></li>
         <li><div class="mini mini-podest" aria-hidden="true"><span class="p2"><b>🥈</b><i></i></span><span class="p1"><b>🥇</b><i></i></span><span class="p3"><b>🥉</b><i></i></span></div><div><h3>Regal und Treppchen</h3><p>Deine Bücher im Holzregal zum Anschauen, und ein Treppchen für deine drei Lieblingsbücher.</p></div></li>
-        <li><div class="mini mini-timer" aria-hidden="true"><span class="dot"></span>00:24:13</div><div><h3>Lesesitzungen</h3><p>Timer starten, lesen, beenden – mit Dauer und Seiten.</p></div></li>
-        <li><div class="mini mini-sterne" aria-hidden="true"><span class="stars"><i style="--f:1"></i><i style="--f:1"></i><i style="--f:1"></i><i style="--f:1"></i><i style="--f:.3"></i></span><small>4,3 von 5</small></div><div><h3>Dein Lesejahr</h3><p>Alle gelesenen Bücher nach Jahr und Monat, mit Sternen und Notizen.</p></div></li>
+        <li><div class="mini mini-timer" aria-hidden="true"><span class="dot"></span>00:24:13</div><div><h3>Lesesitzungen</h3><p>Timer starten, lesen, beenden – mit Dauer und Seiten, auch als Live-Aktivität auf dem Sperrbildschirm.</p></div></li>
+        <li><div class="mini mini-jahr" aria-hidden="true"><span class="story">2026</span><small>Dein<br>Lesejahr</small></div><div><h3>Dein Lesejahr</h3><p>Dein persönlicher Jahresrückblick: läuft wie ein kurzer Film, auf Wunsch mit Musik – mit deinen Büchern, Autoren und Genres und einem Bild zum Teilen.</p><span class="formats">Ab 12. Dezember · 30 Tage lang</span></div></li>
+        <li><div class="mini mini-sterne" aria-hidden="true"><span class="stars"><i style="--f:1"></i><i style="--f:1"></i><i style="--f:1"></i><i style="--f:1"></i><i style="--f:.3"></i></span><small>4,3 von 5</small></div><div><h3>Deine Lesehistorie</h3><p>Alle gelesenen Bücher nach Jahr und Monat, mit Sternen und Notizen.</p></div></li>
+        <li><div class="mini mini-notiz" aria-hidden="true"><span class="zettel"><i></i><i></i></span><small>Notizen</small></div><div><h3>Notizen zum Buch</h3><p>Mehrere Notizen pro Buch: ein Gedanke, ein Zitat, eine Figur – für später.</p></div></li>
+        <li><div class="mini mini-reihe" aria-hidden="true"><span class="baende"><i>1</i><i>2</i><i>3</i></span><small>Buchreihe</small></div><div><h3>Buchreihen von selbst</h3><p>Reihen erkennt bookery automatisch – mit Bandnummer.</p></div></li>
+        <li><div class="mini mini-tipp" aria-hidden="true"><span class="cover3"><i></i><i></i><i></i></span><small>Für dich</small></div><div><h3>Empfehlungen für dich</h3><p>Buchempfehlungen nach deinem Geschmack. Sie entstehen auf deinem iPhone, und du stellst ein, was bookery empfiehlt.</p></div></li>
         <li><div class="mini mini-widget" aria-hidden="true"><span class="w"><img class="cover" src="shots/widget-cover.jpg" alt="" width="72" height="112"><i class="ring"><b>67</b></i></span><small>auch in<br>CarPlay</small></div><div><h3>Widget, auch im Auto</h3><p>Dein aktuelles Buch mit Fortschritt auf dem Home-Bildschirm – und ab iOS 26 auch in CarPlay, etwa beim Hörbuch.</p></div></li>
         <li><div class="mini mini-wunsch" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg><small>Vorgemerkt</small></div><div><h3>Wunschliste</h3><p>Für alles, was du noch lesen willst – mit einem Tipp ins Regal.</p></div></li>
-        <li><div class="mini mini-scan" aria-hidden="true"><span class="code"></span><small>978-3-257-…</small></div><div><h3>Schnell aufgenommen</h3><p>Suchen oder Strichcode scannen – Cover und Seitenzahl kommen von selbst.</p></div></li>
-        <li><div class="mini mini-umzug" aria-hidden="true"><small>Goodreads</small><span>↓</span><b>bookery</b></div><div><h3>Umzug aus Bookie oder Goodreads</h3><p>CSV-Datei exportieren, in bookery einlesen – mit Sternen, Lesedaten und Notizen.</p></div></li>
+        <li><div class="mini mini-stopp" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 9l6 6M15 9l-6 6"/></svg><small>Abgebrochen</small></div><div><h3>Abbrechen erlaubt</h3><p>Gefällt dir ein Buch nicht, legst du es weg. Es wartet in der Liste „Abgebrochen“, falls du doch weiterliest.</p></div></li>
+        <li><div class="mini mini-scan" aria-hidden="true"><span class="code"></span><small>978-3-257-…</small></div><div><h3>Schnell aufgenommen</h3><p>Suchen oder Strichcode scannen – Cover und Seitenzahl kommen von selbst. Fehlt ein Cover, nimmst du ein eigenes Foto.</p></div></li>
+        <li><div class="mini mini-teilen" aria-hidden="true"><span class="blase"><b></b><span><i></i><i></i></span></span><small>Weiterschicken</small></div><div><h3>Bücher an Freunde schicken</h3><p>Ein Buch direkt weiterschicken, etwa per Nachricht – mit Link zum Buch.</p></div></li>
+        <li><div class="mini mini-umzug" aria-hidden="true"><small>Goodreads</small><span>↓</span><b>bookery</b></div><div><h3>Umzug aus Bookie, Goodreads oder Kindle</h3><p>Datei exportieren, in bookery einlesen: aus Bookie und Goodreads mit Sternen, Lesedaten und Notizen, aus Kindle alle gekauften Bücher.</p></div></li>
         <li><div class="mini mini-backup" aria-hidden="true"><span class="docwrap"><span class="doc"><img src="logo.png" alt="" width="20" height="20"></span></span><small>Backup.bookery</small></div><div><h3>Backup als Datei</h3><p>Deine Bibliothek exportieren und auf dem neuen iPhone wieder einspielen.</p></div></li>
         <li class="more"><div class="mini mini-more" aria-hidden="true"><span>+</span></div><div><h3>Weitere Funktionen kommen dazu</h3><p>bookery wächst mit dem, was beim Lesen wirklich hilft – Wünsche gern über „Feedback“ in der App.</p></div></li>
       </ul>
