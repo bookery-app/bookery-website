@@ -85,6 +85,11 @@ h1 em { font-style: italic; color: var(--accent); }
 .doc li { position: relative; padding-left: 22px; }
 .doc li::before { content: ""; position: absolute; left: 4px; top: .7em; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
 .doc strong { font-weight: 600; }
+/* Verantwortlicher: Anschrift zurückhaltend, Kontakt groß (wie im Impressum) */
+.doc .anschrift { margin-bottom: 8px; font-size: 12px; line-height: 1.55; }
+.doc .mail-big a { font: 400 clamp(1.3rem, 3.4vw, 1.9rem)/1.2 var(--serif); color: var(--ink); text-decoration: none; word-break: break-word;
+  background: linear-gradient(var(--accent), var(--accent)) 0 100% / 100% 2px no-repeat; padding-bottom: 4px; }
+.doc .mail-big a:hover { color: var(--accent); }
 .doc .note { color: var(--muted); font-size: .95rem; }
 
 /* ---------- Impressum: Karten ---------- */
