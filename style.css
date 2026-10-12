@@ -92,9 +92,10 @@ h1 em { font-style: italic; color: var(--accent); }
 .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: clamp(24px, 4vw, 34px); display: grid; align-content: start; gap: 10px; }
 .card.accent { background: var(--accent-card); border-color: transparent; }
 .card.wide { grid-column: 1 / -1; }
+.card.wide .big { font-size: clamp(1.6rem, 5.4vw, 2.8rem); }
 .card h2 { margin: 0; font: 600 12px/1 var(--sans); letter-spacing: .18em; text-transform: uppercase; color: var(--accent); }
 .card p { margin: 0; color: var(--muted); }
-.card address { font: 400 clamp(1.35rem, 2.6vw, 1.7rem)/1.35 var(--serif); font-style: normal; color: var(--ink); }
+.card address { font: 400 12px/1.55 var(--sans); font-style: normal; color: var(--ink); } /* Anschrift bewusst zurückhaltend */
 .card .big { font: 400 clamp(1.3rem, 3.4vw, 1.9rem)/1.2 var(--serif); color: var(--ink); text-decoration: none; word-break: break-word;
   background: linear-gradient(var(--accent), var(--accent)) 0 100% / 100% 2px no-repeat; padding-bottom: 4px; justify-self: start; }
 .card .big:hover { color: var(--accent); }
