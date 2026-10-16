@@ -104,23 +104,14 @@ h2 em, h1 em { font-style: italic; color: var(--accent); }
 
 /* Telefone */
 .phones { position: relative; height: clamp(520px, 62vw, 680px); }
-/* iPhone 17 Pro: schmaler schwarzer Rand, Rahmen aus Metall, Dynamic Island, Tasten an den Seiten.
-   Prozentwerte für margin und width beziehen sich auf die Breite des Telefons, so passt alles bei jeder Größe. */
-.phone { --frame: #4a4d52; position: absolute; isolation: isolate; width: clamp(220px, 26vw, 300px); padding: 2.4%; border-radius: 15.2% / 7%;
-  background: #050506; box-shadow: 0 0 0 1px #000 inset, 0 0 0 1.5px var(--frame), 0 0 0 3px #26282b,
-  0 40px 80px -20px rgb(0 0 0 / .45), 0 18px 36px -18px rgb(0 0 0 / .35); }
+/* iPhone 18 Pro (71,9 × 150 mm): Rahmen, Rand, Dynamic Island und Tasten liegen als phone.svg über dem Screenshot.
+   Prozentwerte beziehen sich auf die Breite des Telefons; das Seitenverhältnis stimmt mit dem echten Gerät überein. */
+.phone { position: absolute; width: clamp(220px, 26vw, 300px); padding: 3.69%; border-radius: 18% / 8.63%; background: #030304;
+  box-shadow: 0 40px 80px -20px rgb(0 0 0 / .45), 0 18px 36px -18px rgb(0 0 0 / .35); }
 /* Bild bestimmt die Höhe: so wird der Screenshot nie beschnitten oder vergrößert. */
-.phone img { width: 100%; height: auto; aspect-ratio: 660 / 1434; border-radius: 12.6% / 5.8%; }
-/* Dynamic Island: 126 × 37 pt bei 440 pt Bildschirmbreite, 11 pt unter dem oberen Rand. */
-.phone::before { content: ""; position: absolute; z-index: 1; top: 0; left: 0; right: 0; width: 27.3%; margin: 4.8% auto 0;
-  aspect-ratio: 126 / 37; border-radius: 999px; background: #000; }
-/* Tasten: links Action-Button und Lautstärke, rechts Seitentaste und Camera Control. */
-.phone::after { content: ""; position: absolute; z-index: -1; top: 0; bottom: 0; left: -3px; right: -3px;
-  background-image: linear-gradient(var(--frame), var(--frame)), linear-gradient(var(--frame), var(--frame)), linear-gradient(var(--frame), var(--frame)),
-    linear-gradient(var(--frame), var(--frame)), linear-gradient(var(--frame), var(--frame));
-  background-size: 3px 3.6%, 3px 6.4%, 3px 6.4%, 3px 10%, 3px 6%;
-  background-position: left 0 top 17.5%, left 0 top 25.5%, left 0 top 34%, right 0 top 27%, right 0 top 58%;
-  background-repeat: no-repeat; border-radius: 2px; }
+.phone img { width: 100%; height: auto; aspect-ratio: 660 / 1434; border-radius: 15.4% / 7.08%; }
+.phone::after { content: ""; position: absolute; top: 0; bottom: 0; left: -.556%; right: -.556%; pointer-events: none;
+  background: url(phone.svg) center / 100% 100% no-repeat; }
 .phone.front { --fx: -28%; left: 50%; top: 0; transform: translateX(var(--fx)) rotate(3deg); z-index: 2; animation: float 7s ease-in-out infinite; }
 .phone.back { --bx: -92%; left: 50%; top: 60px; transform: translateX(var(--bx)) rotate(-7deg) scale(.9); opacity: .96; animation: float2 8s ease-in-out infinite; }
 @keyframes float { 50% { transform: translateX(var(--fx)) rotate(3deg) translateY(-14px); } }
@@ -170,7 +161,7 @@ h2 em, h1 em { font-style: italic; color: var(--accent); }
 /* Solange die Galerie von selbst wandert, kein Einrasten -- sonst springt sie bei jedem Schritt zurück. */
 .gallery.wandert { scroll-snap-type: none; }
 .shot { flex: none; width: clamp(210px, 22vw, 250px); scroll-snap-align: center; display: grid; align-content: start; gap: 16px; margin: 0; }
-.shot .phone { position: relative; width: 100%; box-shadow: 0 0 0 1px #000 inset, 0 0 0 1.5px var(--frame), 0 0 0 3px #26282b, 0 28px 50px -24px rgb(0 0 0 / .45); transition: transform .3s ease; }
+.shot .phone { position: relative; width: 100%; box-shadow: 0 28px 50px -24px rgb(0 0 0 / .45); transition: transform .3s ease; }
 .shot:hover .phone { transform: translateY(-6px); }
 .shot figcaption { text-align: center; }
 .shot figcaption b { display: block; font: 400 1.25rem/1.3 var(--serif); }
