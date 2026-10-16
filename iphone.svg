@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-0.6 0 73.1 150">
+  <!-- iPhone 18 Pro von vorn, Maße in Millimetern (71,9 × 150 mm, links und rechts je 0,6 mm für die Tasten).
+       Liegt ÜBER dem Screenshot: Gehäuse mit ausgespartem Bildschirm (66,6 × 144,8 mm), Glanz und Dynamic Island.
+       Dieselbe Datei auf dustingotte.de, bookery-app.de und smarthome.dustingotte.de; Einbau siehe style.css (.shot/.phone). -->
+  <defs>
+    <linearGradient id="rim" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#7d8188"/>
+      <stop offset=".018" stop-color="#e4e6e9"/>
+      <stop offset=".05" stop-color="#a3a7ad"/>
+      <stop offset=".5" stop-color="#c3c6cb"/>
+      <stop offset=".95" stop-color="#a3a7ad"/>
+      <stop offset=".982" stop-color="#eceef0"/>
+      <stop offset="1" stop-color="#7d8188"/>
+    </linearGradient>
+    <linearGradient id="rimV" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity=".55"/>
+      <stop offset=".03" stop-color="#fff" stop-opacity="0"/>
+      <stop offset=".97" stop-color="#000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".25"/>
+    </linearGradient>
+    <linearGradient id="btnL" x1="0" x2="1">
+      <stop offset="0" stop-color="#6e7279"/>
+      <stop offset=".45" stop-color="#d6d9dd"/>
+      <stop offset="1" stop-color="#9a9ea5"/>
+    </linearGradient>
+    <linearGradient id="btnR" x1="1" x2="0">
+      <stop offset="0" stop-color="#6e7279"/>
+      <stop offset=".45" stop-color="#d6d9dd"/>
+      <stop offset="1" stop-color="#9a9ea5"/>
+    </linearGradient>
+    <linearGradient id="sheen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity=".16"/>
+      <stop offset=".35" stop-color="#fff" stop-opacity=".03"/>
+      <stop offset=".36" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <!-- Bildschirm ausgespart: dort scheint der Screenshot durch -->
+    <mask id="hole" maskUnits="userSpaceOnUse" x="-1" y="-1" width="75" height="152">
+      <rect x="-1" y="-1" width="75" height="152" fill="#fff"/>
+      <rect x="2.65" y="2.6" width="66.6" height="144.8" rx="9.1" fill="#000"/>
+    </mask>
+    <clipPath id="screen"><rect x="2.65" y="2.6" width="66.6" height="144.8" rx="9.1"/></clipPath>
+  </defs>
+
+  <!-- Tasten: links Aktionstaste und Lautstärke, rechts Seitentaste und Kamerasteuerung -->
+  <rect x="-.6" y="27" width="1.4" height="6.6" rx=".55" fill="url(#btnL)"/>
+  <rect x="-.6" y="40.5" width="1.4" height="12.8" rx=".55" fill="url(#btnL)"/>
+  <rect x="-.6" y="56.6" width="1.4" height="12.8" rx=".55" fill="url(#btnL)"/>
+  <rect x="71.1" y="44" width="1.4" height="19.5" rx=".55" fill="url(#btnR)"/>
+  <rect x="71.3" y="88" width="1.0" height="17" rx=".45" fill="#3c3f45"/>
+
+  <g mask="url(#hole)">
+    <!-- Gehäuse: Aluminiumkante mit Lichtkante oben -->
+    <rect width="71.9" height="150" rx="11.9" fill="url(#rim)"/>
+    <rect width="71.9" height="150" rx="11.9" fill="url(#rimV)"/>
+    <rect x=".18" y=".18" width="71.54" height="149.64" rx="11.72" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width=".18"/>
+    <!-- Antennenfugen -->
+    <g fill="#5b5f66" opacity=".7">
+      <rect x="12" y="0" width=".5" height=".75"/><rect x="59.4" y="0" width=".5" height=".75"/>
+      <rect x="12" y="149.25" width=".5" height=".75"/><rect x="59.4" y="149.25" width=".5" height=".75"/>
+    </g>
+    <!-- Glas mit schwarzem Rand -->
+    <rect x=".85" y=".85" width="70.2" height="148.3" rx="11.05" fill="#050506"/>
+    <rect x=".85" y=".85" width="70.2" height="148.3" rx="11.05" fill="none" stroke="#2a2c30" stroke-width=".2"/>
+  </g>
+
+  <!-- leichter Glanz auf dem Glas, Dynamic Island mit Kamera -->
+  <rect x="2.65" y="2.6" width="66.6" height="144.8" fill="url(#sheen)" clip-path="url(#screen)"/>
+  <rect x="26.1" y="4.4" width="19.7" height="5.9" rx="2.95" fill="#000"/>
+  <circle cx="42.4" cy="7.35" r="1.25" fill="#0c0f18"/>
+  <circle cx="42.4" cy="7.35" r=".55" fill="#1b2340"/>
+</svg>

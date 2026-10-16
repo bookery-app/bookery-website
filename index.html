@@ -104,15 +104,15 @@ h2 em, h1 em { font-style: italic; color: var(--accent); }
 
 /* Telefone */
 .phones { position: relative; height: clamp(520px, 62vw, 680px); }
-/* iPhone 18 Pro (71,9 × 150 mm): Rahmen, Rand, Dynamic Island und Tasten liegen als phone.svg über dem Screenshot.
-   Prozentwerte beziehen sich auf die Breite des Telefons; das Seitenverhältnis stimmt mit dem echten Gerät überein. */
-/* Prozent beim padding bezögen sich auf .phones, nicht aufs Telefon: deshalb aus der Breite --w gerechnet. */
-.phone { --w: clamp(220px, 26vw, 300px); position: absolute; width: var(--w); padding: calc(var(--w) * .0369); border-radius: 18% / 8.63%; background: #030304;
-  box-shadow: 0 40px 80px -20px rgb(0 0 0 / .45), 0 18px 36px -18px rgb(0 0 0 / .35); }
-/* Bild bestimmt die Höhe: so wird der Screenshot nie beschnitten oder vergrößert. */
-.phone img { width: 100%; height: auto; aspect-ratio: 660 / 1434; border-radius: 15.4% / 7.08%; }
-.phone::after { content: ""; position: absolute; top: 0; bottom: 0; left: -.556%; right: -.556%; pointer-events: none;
-  background: url(phone.svg) center / 100% 100% no-repeat; }
+/* iPhone 18 Pro (71,9 × 150 mm): iphone.svg (Gehäuse, Glanz, Dynamic Island, Tasten) liegt über dem Screenshot,
+   der Bildschirm (66,6 × 144,8 mm) ist darin ausgespart. Dieselbe Datei und dieselben Maße wie auf dustingotte.de und
+   smarthome.dustingotte.de; alle Werte in Prozent des Telefons (73,1 × 150 mm samt Tasten). */
+.phone { --w: clamp(220px, 26vw, 300px); position: absolute; width: var(--w); aspect-ratio: 73.1 / 150;
+  filter: drop-shadow(0 30px 30px rgb(0 0 0 / .35)) drop-shadow(0 10px 14px rgb(0 0 0 / .25)); }
+.phone img { position: absolute; left: 4.446%; top: 1.733%; width: 91.108%; height: 96.533%;
+  object-fit: cover; object-position: top; border-radius: 13.66% / 6.28%; background: #050506; }
+.phone::after { content: ""; position: absolute; z-index: 1; inset: 0; pointer-events: none;
+  background: url(iphone.svg) center / 100% 100% no-repeat; }
 .phone.front { --fx: -28%; left: 50%; top: 0; transform: translateX(var(--fx)) rotate(3deg); z-index: 2; animation: float 7s ease-in-out infinite; }
 .phone.back { --bx: -92%; left: 50%; top: 60px; transform: translateX(var(--bx)) rotate(-7deg) scale(.9); opacity: .96; animation: float2 8s ease-in-out infinite; }
 @keyframes float { 50% { transform: translateX(var(--fx)) rotate(3deg) translateY(-14px); } }
@@ -162,7 +162,7 @@ h2 em, h1 em { font-style: italic; color: var(--accent); }
 /* Solange die Galerie von selbst wandert, kein Einrasten -- sonst springt sie bei jedem Schritt zurück. */
 .gallery.wandert { scroll-snap-type: none; }
 .shot { flex: none; width: clamp(210px, 22vw, 250px); scroll-snap-align: center; display: grid; align-content: start; gap: 16px; margin: 0; }
-.shot .phone { position: relative; width: 100%; padding: 3.69%; box-shadow: 0 28px 50px -24px rgb(0 0 0 / .45); transition: transform .3s ease; }
+.shot .phone { position: relative; width: 100%; filter: drop-shadow(0 22px 22px rgb(0 0 0 / .3)); transition: transform .3s ease; }
 .shot:hover .phone { transform: translateY(-6px); }
 .shot figcaption { text-align: center; }
 .shot figcaption b { display: block; font: 400 1.25rem/1.3 var(--serif); }
@@ -410,7 +410,7 @@ footer small { color: var(--muted); }
   .hero .sub { font-size: 1rem; }
   .button { min-height: 50px; padding: 0 22px; border-radius: 15px; font-size: 1rem; }
   .ticks { font-size: .86rem; gap: 6px 14px; }
-  .phones { height: calc(42vw * 2.173 + 40px); max-width: none; }
+  .phones { height: calc(42vw * 2.052 + 40px); max-width: none; }
   .phone { --w: 42vw; }
   .phone.front { --fx: -6%; }
   .phone.back { --bx: -94%; top: 34px; }
