@@ -57,6 +57,9 @@
 
   // Einblenden beim Scrollen, das Regal füllt sich einmal.
   const show = el => el.classList.add(el.id === 'shelf' ? 'filled' : 'in');
+  // Der Kopf (Text und Telefone) blendet sofort beim Laden ein, nicht erst beim Scrollen: Auf dem iPhone
+  // liegen die Telefone unter dem Text knapp außerhalb des Bildschirms und tauchten sonst plötzlich auf.
+  requestAnimationFrame(() => requestAnimationFrame(() => document.querySelectorAll('.hero .reveal').forEach(show)));
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver(entries => entries.forEach(e => {
       if (e.isIntersecting) { show(e.target); io.unobserve(e.target); }
