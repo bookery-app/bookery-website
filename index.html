@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>bookery – Lesetagebuch für das iPhone</title>
-<meta name="description" content="bookery – deine Bibliothek und dein Lesetagebuch für das iPhone. Privat, ohne Konto, ohne Werbung, ohne Tracking. Jetzt testen.">
+<title>bookery – Bibliothek und Lesetagebuch für das iPhone</title>
+<meta name="description" content="bookery – deine Bibliothek und dein Lesetagebuch für das iPhone. Privat, ohne Konto, ohne Werbung, ohne Tracking. Jetzt im App Store: 14 Tage gratis, dann einmalig 2,99 €.">
 <meta name="theme-color" content="#E6F6E8" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#16241B" media="(prefers-color-scheme: dark)">
 <meta property="og:title" content="bookery – Dein Lesetagebuch für das iPhone">
-<meta property="og:description" content="Halte fest, was du liest – schön sortiert und ganz privat. Ohne Konto, ohne Werbung, ohne Tracking.">
+<meta property="og:description" content="Halte fest, was du liest – schön sortiert und ganz privat. Jetzt im App Store: 14 Tage gratis, dann einmalig 2,99 €, kein Abo.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="bookery">
 <meta property="og:url" content="https://bookery-app.de/">
@@ -82,9 +82,8 @@ h2 em, h1 em { font-style: italic; color: var(--accent); }
 .hero-text { display: grid; gap: 22px; justify-items: start; }
 .badge { display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px 7px 10px; border-radius: 999px;
   background: var(--card); border: 1px solid var(--border); font-size: .88rem; font-weight: 600; color: var(--ink); }
-/* Immer rot, unabhängig von der Farbwelt: soll ins Auge stechen. */
-.badge i { width: 8px; height: 8px; border-radius: 50%; background: #e5342b; box-shadow: 0 0 0 0 #e5342b; animation: ping 2s infinite; }
-@keyframes ping { 0% { box-shadow: 0 0 0 0 rgb(229 52 43 / .6); } 80%, 100% { box-shadow: 0 0 0 9px transparent; } }
+/* Punkt in der Farbwelt: ruhig, ohne Pulsieren (die Beta-Zeit mit rotem Live-Punkt ist vorbei). */
+.badge i { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
 .hero h1 { font-size: clamp(2.6rem, 5.4vw, 4.5rem); line-height: 1.04; }
 @media (max-width: 900px) { .hero h1 { font-size: clamp(2.5rem, 10.5vw, 4.2rem); } }
 .hero .sub { margin: 0; font-size: clamp(1.1rem, 2vw, 1.3rem); color: var(--muted); max-width: 30em; text-wrap: pretty; }
@@ -257,6 +256,14 @@ h2 em, h1 em { font-style: italic; color: var(--accent); }
 .mini-tipp .cover3 i { width: 22px; height: 32px; border-radius: 3px; background: #C0905F; box-shadow: 0 2px 5px -2px rgb(0 0 0 / .4); }
 .mini-tipp .cover3 i:nth-child(2) { width: 27px; height: 40px; margin: 0 -5px; position: relative; background: #2A6B66; }
 .mini-tipp .cover3 i:nth-child(3) { background: #7C5A86; }
+/* Regale: Reiter wie über dem Bücherregal der App, der gezeigte gefüllt. */
+.mini-regale { padding: 0 8px; }
+.mini-regale .tabs { display: flex; gap: 3px; }
+.mini-regale .tabs i { font: 600 .6rem/1 var(--sans); font-style: normal; padding: 6px 7px; border-radius: 999px; background: var(--chip); color: var(--ink); white-space: nowrap; }
+.mini-regale .tabs i.on { background: var(--accent); color: var(--on-accent); }
+/* Kosten: Summe wie oben in „Kosten“ der App. */
+.mini-kosten { gap: 4px; }
+.mini-kosten b { font: 600 1.25rem/1 var(--sans); color: var(--ink); font-variant-numeric: tabular-nums; letter-spacing: -.01em; }
 /* Abgebrochen: Kreis mit X wie der Knopf in der App. */
 .mini-stopp svg { width: 30px; height: 30px; fill: none; stroke: var(--muted); stroke-width: 1.8; stroke-linecap: round; }
 /* Weiterschicken: Sprechblase mit Cover und Titelzeilen. */
@@ -320,51 +327,47 @@ h2 em, h1 em { font-style: italic; color: var(--accent); }
 .privacy .more a { color: #AFD0BB; font-weight: 600; }
 @media (max-width: 820px) { .pillars { grid-template-columns: 1fr; } }
 
-/* ---------- Testen ---------- */
-.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; counter-reset: step; margin-bottom: 40px; }
-.steps { margin-bottom: 0; }
-.step { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; position: relative; }
-.step::before { counter-increment: step; content: counter(step); display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%;
-  background: var(--accent); color: var(--on-accent); font: 600 1.05rem/1 var(--sans); margin-bottom: 16px; }
-.step h3 { margin: 0 0 6px; font: 600 1.1rem/1.3 var(--sans); }
-.step p { margin: 0; color: var(--muted); }
-.center { text-align: center; }
-@media (max-width: 820px) { .steps { grid-template-columns: 1fr; } }
+/* ---------- App-Store-Abzeichen (wie auf dustingotte.de: Apples schwarzes Abzeichen, nachgebaut, ohne fremde Datei) ---------- */
+.asb { display: inline-flex; align-items: center; gap: 9px; height: 56px; padding: 0 22px 0 16px; border-radius: 14px;
+  background: #000; color: #fff; text-decoration: none; text-align: left; box-shadow: inset 0 0 0 1px #A6A6A6;
+  transition: transform .16s ease-out, box-shadow .2s ease; }
+.asb-logo { width: 24px; height: 28px; flex: none; fill: currentColor; translate: 0 -1px; }
+.asb span { display: grid; line-height: 1; }
+.asb small { font-size: .68rem; font-weight: 500; letter-spacing: .02em; }
+.asb b { margin-top: 2px; font-size: 1.4rem; font-weight: 600; letter-spacing: -.02em; }
+.asb:active { transform: scale(.97); }
+@media (hover: hover) and (pointer: fine) { .asb:hover { box-shadow: inset 0 0 0 1px #A6A6A6, 0 10px 24px -8px rgb(0 0 0 / .45); } }
 
-/* ---------- Testen: Anmeldung ---------- */
-.signup { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 64px); align-items: center; padding: clamp(28px, 5vw, 56px);
-  border-radius: 32px; background: var(--accent-card); position: relative; overflow: hidden; isolation: isolate; margin-bottom: 16px; transition: background-color .5s; }
-.signup::before { content: ""; position: absolute; z-index: -1; width: 420px; height: 420px; right: -120px; top: -160px; border-radius: 50%;
+/* ---------- Preis: links Text und Abzeichen, rechts Karte mit Preis und Vergleich wie das Freischalten-Blatt der App ---------- */
+.price { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 64px); align-items: center; padding: clamp(28px, 5vw, 56px);
+  border-radius: 32px; background: var(--accent-card); position: relative; overflow: hidden; isolation: isolate; transition: background-color .5s; }
+.price::before { content: ""; position: absolute; z-index: -1; width: 420px; height: 420px; right: -120px; top: -160px; border-radius: 50%;
   background: var(--soft); opacity: .35; filter: blur(60px); }
-.signup-text { display: grid; gap: 14px; }
-.signup-text p { margin: 0; color: var(--muted); font-size: 1.05rem; text-wrap: pretty; }
-.signup-form { display: grid; gap: 10px; background: var(--card); border-radius: 24px; padding: clamp(20px, 3vw, 28px);
+.price-text { display: grid; gap: 14px; justify-items: start; }
+.price-text p { margin: 0; color: var(--muted); font-size: 1.05rem; text-wrap: pretty; }
+.get { display: flex; align-items: center; gap: 18px; margin-top: 8px; }
+.qr-mini { display: flex; align-items: center; gap: 12px; color: var(--muted); font-size: .85rem; line-height: 1.3; }
+.qr-mini img { width: 72px; height: 72px; padding: 5px; border-radius: 10px; background: #fff; image-rendering: pixelated;
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / .08); }
+/* Am Handy ist man schon auf dem iPhone: kein QR-Code. */
+@media (hover: none), (max-width: 820px) { .qr-mini { display: none; } }
+.price-card { display: grid; gap: 14px; background: var(--card); border-radius: 24px; padding: clamp(20px, 3vw, 28px);
   box-shadow: 0 24px 50px -28px rgb(0 0 0 / .35); transition: background-color .5s; }
-.signup-form label { font-weight: 600; font-size: .95rem; }
-.form-head { display: flex; align-items: center; gap: 10px; padding-bottom: 14px; margin-bottom: 4px; border-bottom: 1px solid var(--border); }
-.form-head h3 { margin: 0; font: 400 1.35rem/1.2 var(--serif); }
-/* Immer rot wie das Hero-Badge: zeigt, dass die Anmeldung gerade offen ist */
-.live-tag { display: inline-flex; align-items: center; gap: 6px; padding: 4px 9px 4px 8px; border-radius: 999px; background: #D93036; color: #fff;
-  font: 700 .68rem/1.2 var(--sans); letter-spacing: .12em; text-transform: uppercase; }
-.live-tag i { width: 6px; height: 6px; border-radius: 50%; background: #fff; animation: ping-white 2s infinite; }
-@keyframes ping-white { 0% { box-shadow: 0 0 0 0 rgb(255 255 255 / .7); } 80%, 100% { box-shadow: 0 0 0 6px transparent; } }
-.field { display: grid; gap: 10px; }
-.field input { width: 100%; min-height: 56px; padding: 0 18px; border-radius: 16px; border: 1.5px solid var(--border); background: var(--paper);
-  color: var(--ink); font: 400 1.1rem/1 var(--sans); transition: border-color .2s, box-shadow .2s; }
-.field input::placeholder { color: color-mix(in srgb, var(--muted) 70%, transparent); }
-.field input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 18%, transparent); }
-.field input[aria-invalid="true"] { border-color: #C2453A; }
-.field .button { width: 100%; border: 0; cursor: pointer; }
-.field .button[disabled] { opacity: .7; cursor: progress; transform: none; }
-.signup-form .note { margin: 2px 0 0; color: var(--muted); font-size: .88rem; }
-.signup-form .note.error { color: #C2453A; }
-@media (prefers-color-scheme: dark) { .field input[aria-invalid="true"] { border-color: #F08A80; } .signup-form .note.error { color: #F08A80; } }
-.hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
-.done { display: grid; justify-items: start; }
-.done[hidden] { display: none; }
-.signup-form.sent > :not(.done) { display: none; }
-@media (max-width: 820px) { .signup { grid-template-columns: 1fr; } }
-@media (max-width: 560px) { .signup { padding: 26px 18px 18px; border-radius: 28px; } .signup-text { padding: 0 6px; } }
+.price-head { display: flex; align-items: baseline; gap: 14px; padding-bottom: 14px; border-bottom: 1px solid var(--border); }
+.price-head b { font: 400 clamp(2.4rem, 5vw, 3rem)/1 var(--serif); font-variant-numeric: lining-nums; white-space: nowrap; }
+.price-head span { color: var(--muted); font-size: .9rem; line-height: 1.35; }
+.compare { width: 100%; border-collapse: collapse; font-size: .95rem; }
+.compare th, .compare td { padding: 8px 0; text-align: center; }
+.compare thead th { font-size: .72rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); width: 26%; padding-top: 0; }
+.compare tbody th { text-align: left; font-weight: 500; }
+.compare tbody tr + tr > * { border-top: 1px solid var(--border); }
+.compare svg { width: 20px; height: 20px; fill: none; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; vertical-align: middle; }
+.compare .yes { stroke: var(--accent); }
+.compare .no { stroke: color-mix(in srgb, var(--muted) 60%, transparent); }
+.price-card .note { margin: 0; color: var(--muted); font-size: .88rem; }
+@media (max-width: 820px) { .price { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .price { padding: 26px 18px 18px; border-radius: 28px; } .price-text { padding: 0 6px; }
+  .price-text p { font-size: .98rem; } .price-head { flex-direction: column; align-items: flex-start; gap: 8px; } .compare { font-size: .9rem; } .compare thead th { font-size: .66rem; letter-spacing: .05em; } }
 
 /* ---------- Fragen ---------- */
 .faq { max-width: 760px; margin: 0 auto; display: grid; gap: 12px; }
@@ -409,6 +412,7 @@ footer small { color: var(--muted); }
   .hero h1 { font-size: clamp(2.1rem, 9.8vw, 2.6rem); }
   .hero .sub { font-size: 1rem; }
   .button { min-height: 50px; padding: 0 22px; border-radius: 15px; font-size: 1rem; }
+  .asb { height: 50px; padding: 0 18px 0 14px; border-radius: 13px; } .asb b { font-size: 1.25rem; } .asb-logo { width: 22px; height: 26px; }
   .ticks { font-size: .86rem; gap: 6px 14px; }
   .phones { height: calc(42vw * 2.052 + 40px); max-width: none; }
   .phone { --w: 42vw; }
@@ -442,10 +446,6 @@ footer small { color: var(--muted); }
   .pillar svg { width: 26px; height: 26px; margin-bottom: 10px; }
   .pillar h3 { font-size: 1.2rem; }
   .pillar p { font-size: .92rem; }
-  .signup-text p { font-size: .98rem; }
-  .field input { min-height: 50px; font-size: 1rem; }
-  .step { padding: 20px; }
-  .step::before { width: 34px; height: 34px; font-size: .95rem; margin-bottom: 12px; }
   .faq summary { font-size: .98rem; padding: 16px 34px 16px 0; }
   .faq details { padding: 0 18px; border-radius: 16px; }
   .faq details p { font-size: .94rem; }
@@ -483,9 +483,10 @@ footer small { color: var(--muted); }
       <a href="#privat">Datenschutz</a>
       <a href="#funktionen">Funktionen</a>
       <a href="#farben">Farben</a>
+      <a href="#preis">Preis</a>
       <a href="#fragen">Fragen</a>
     </nav>
-    <a class="pill" href="#testen">Testen</a>
+    <a class="pill" href="https://apps.apple.com/app/id6819163618">Laden</a>
   </div>
 </header>
 
@@ -494,19 +495,18 @@ footer small { color: var(--muted); }
   <section class="hero">
     <div class="wrap">
       <div class="hero-text">
-        <span class="badge reveal"><i></i>Beta – jetzt über TestFlight</span>
+        <span class="badge reveal"><i></i>Neu im App Store</span>
         <h1 class="reveal" style="--d:80ms">Jede Seite.<br>Jedes Buch.<br><em>So wie du es liebst.</em></h1>
         <p class="sub reveal" style="--d:160ms">bookery ist dein Lesetagebuch für das iPhone: Halte fest, was du liest, gelesen hast und noch lesen willst – schön sortiert, ohne Konto und nur auf deinem Gerät.</p>
         <div class="actions reveal" style="--d:240ms">
-          <a class="button" href="#testen" data-focus-signup>Jetzt testen
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="asb" href="https://apps.apple.com/app/id6819163618" aria-label="bookery im App Store laden"><svg class="asb-logo" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg><span><small>Laden im</small><b>App Store</b></span></a>
           <a class="button ghost" href="#einblick">Ansehen</a>
         </div>
         <ul class="ticks reveal" style="--d:320ms">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>Kostenlos</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>14 Tage gratis</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>Dann einmalig 2,99 €</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>Kein Abo</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>Keine Werbung</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>Kein Tracking</li>
         </ul>
       </div>
 
@@ -595,20 +595,22 @@ footer small { color: var(--muted); }
       </div>
       <ul class="contents reveal">
         <li><div class="mini mini-prog" aria-hidden="true"><span class="bar"><i></i></span><small>Seite 214 von 320</small></div><div><h3>Fortschritt im Blick</h3><p>Du weißt immer, wo du stehst und wie viel noch vor dir liegt – ohne selbst zu rechnen, auch bei E&#8209;Books und Hörbüchern.</p><span class="formats">Buch · Kindle · tolino · Kobo · Audible · Spotify</span></div></li>
-        <li><div class="mini mini-podest" aria-hidden="true"><span class="p2"><b>🥈</b><i></i></span><span class="p1"><b>🥇</b><i></i></span><span class="p3"><b>🥉</b><i></i></span></div><div><h3>Regal und Treppchen</h3><p>Du siehst deine Sammlung wie im echten Regal vor dir und hast deine drei Lieblingsbücher immer im Blick.</p></div></li>
+        <li><div class="mini mini-podest" aria-hidden="true"><span class="p2"><b>🥈</b><i></i></span><span class="p1"><b>🥇</b><i></i></span><span class="p3"><b>🥉</b><i></i></span></div><div><h3>Dein Treppchen</h3><p>Deine drei Lieblingsbücher stehen ganz oben – und du hast sie immer im Blick.</p></div></li>
+        <li><div class="mini mini-regale" aria-hidden="true"><span class="tabs"><i class="on">Krimis</i><i>Liebe</i><i>+</i></span><small>Bis zu 10 Regale</small></div><div><h3>Regale wie zu Hause</h3><p>Du stellst jedes Buch an seinen Platz – in bis zu zehn Regalen, so sortiert, wie du willst. Ein Wisch, und du stehst vor dem nächsten.</p></div></li>
         <li><div class="mini mini-timer" aria-hidden="true"><span class="dot"></span>00:24:13</div><div><h3>Lesesitzungen</h3><p>Du merkst, wie viel Zeit du dir wirklich zum Lesen nimmst – und bleibst leichter dran.</p></div></li>
         <li><div class="mini mini-jahr" aria-hidden="true"><span class="story">2026</span><small>Dein<br>Lesejahr</small></div><div><h3>Dein Lesejahr</h3><p>Du erlebst dein Lesejahr noch einmal wie einen kleinen Film und hast am Ende ein Bild, das du mit anderen teilen kannst.</p><span class="formats">Ab 12. Dezember · 30 Tage lang</span></div></li>
         <li><div class="mini mini-sterne" aria-hidden="true"><span class="stars"><i style="--f:1"></i><i style="--f:1"></i><i style="--f:1"></i><i style="--f:1"></i><i style="--f:.3"></i></span><small>4,3 von 5</small></div><div><h3>Deine Lesehistorie</h3><p>Du findest jedes gelesene Buch wieder und weißt noch nach Jahren, wann du es gelesen hast und wie es dir gefiel.</p></div></li>
         <li><div class="mini mini-notiz" aria-hidden="true"><span class="zettel"><i></i><i></i></span><small>Notizen</small></div><div><h3>Notizen zum Buch</h3><p>Gedanken, Zitate und Figuren gehen dir nicht verloren – sie warten beim Buch, wenn du später zurückblickst.</p></div></li>
-        <li><div class="mini mini-reihe" aria-hidden="true"><span class="baende"><i>1</i><i>2</i><i>3</i></span><small>Buchreihe</small></div><div><h3>Buchreihen von selbst</h3><p>Du behältst bei Reihen den Überblick, ohne die Bände von Hand zu sortieren.</p></div></li>
+        <li><div class="mini mini-reihe" aria-hidden="true"><span class="baende"><i>1</i><i>2</i><i>3</i></span><small>Buchreihe</small></div><div><h3>Reihen als Ordner</h3><p>Suchst du eine Buchreihe, liegen alle Bände in einem Ordner – in der richtigen Reihenfolge, deutsche Ausgaben zuerst.</p></div></li>
+        <li><div class="mini mini-kosten" aria-hidden="true"><b>86,40 €</b><small>2026 ausgegeben</small></div><div><h3>Kosten im Blick</h3><p>Du siehst, was du im Jahr für Bücher ausgibst und was deine Bibliothek wert ist. Für gedruckte Bücher schlägt bookery den Preis gleich vor.</p></div></li>
         <li><div class="mini mini-tipp" aria-hidden="true"><span class="cover3"><i></i><i></i><i></i></span><small>Für dich</small></div><div><h3>Empfehlungen für dich</h3><p>Du entdeckst dein nächstes Buch, ohne lange zu suchen – und niemand wertet dafür dein Leseverhalten aus.</p></div></li>
         <li><div class="mini mini-widget" aria-hidden="true"><span class="w"><img class="cover" src="shots/widget-cover.jpg" alt="" width="72" height="112"><i class="ring"><b>67</b></i></span><small>auch in<br>CarPlay</small></div><div><h3>Widget, auch im Auto</h3><p>Dein aktuelles Buch ist immer nur einen Blick entfernt: auf dem Home-Bildschirm und ab iOS 26 auch in CarPlay.</p></div></li>
         <li><div class="mini mini-wunsch" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg><small>Vorgemerkt</small></div><div><h3>Wunschliste</h3><p>Du vergisst keinen Buchtipp mehr und weißt im Buchladen sofort, was du lesen wolltest.</p></div></li>
         <li><div class="mini mini-stopp" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 9l6 6M15 9l-6 6"/></svg><small>Abgebrochen</small></div><div><h3>Abbrechen erlaubt</h3><p>Du musst dich durch kein Buch quälen: Leg es ohne schlechtes Gewissen weg und lies weiter, wenn dir danach ist.</p></div></li>
-        <li><div class="mini mini-scan" aria-hidden="true"><span class="code"></span><small>978-3-257-…</small></div><div><h3>Schnell aufgenommen</h3><p>Ein neues Buch steht in Sekunden im Regal – ohne Titel, Cover oder Seitenzahl abzutippen.</p></div></li>
+        <li><div class="mini mini-scan" aria-hidden="true"><span class="code"></span><small>978-3-257-…</small></div><div><h3>Schnell aufgenommen</h3><p>Ein neues Buch steht in Sekunden im Regal – ohne Titel, Cover oder Seitenzahl abzutippen. Strichcode scannen oder suchen, auf Wunsch nur in deiner Sprache.</p></div></li>
         <li><div class="mini mini-teilen" aria-hidden="true"><span class="blase"><b></b><span><i></i><i></i></span></span><small>Weiterschicken</small></div><div><h3>Bücher an Freunde schicken</h3><p>Du gibst einen Buchtipp in Sekunden weiter, und deine Freunde finden das Buch sofort.</p></div></li>
-        <li><div class="mini mini-umzug" aria-hidden="true"><small>Goodreads</small><span>↓</span><b>bookery</b></div><div><h3>Umzug aus Bookie, Goodreads oder Kindle</h3><p>Du fängst nicht bei null an: Deine bisherige Bibliothek zieht mit um – aus Bookie und Goodreads samt Sternen, Lesedaten und Notizen.</p></div></li>
-        <li><div class="mini mini-backup" aria-hidden="true"><span class="docwrap"><span class="doc"><img src="logo.png" alt="" width="20" height="20"></span></span><small>Backup.bookery</small></div><div><h3>Backup als Datei</h3><p>Deine Bibliothek bleibt dir erhalten, auch wenn du das iPhone wechselst oder es verloren geht.</p></div></li>
+        <li><div class="mini mini-umzug" aria-hidden="true"><small>Goodreads</small><span>↓</span><b>bookery</b></div><div><h3>Umzug aus Bookie, Goodreads oder Kindle</h3><p>Du fängst nicht bei null an: Deine bisherige Bibliothek zieht mit um – aus Bookie und Goodreads samt Sternen, Lesedaten und Notizen, aus Kindle mit deinem Lesestand.</p></div></li>
+        <li><div class="mini mini-backup" aria-hidden="true"><span class="docwrap"><span class="doc"><img src="logo.png" alt="" width="20" height="20"></span></span><small>Backup.bookery</small></div><div><h3>Backup als Datei</h3><p>Deine Bibliothek bleibt dir erhalten, auch wenn du das iPhone wechselst oder es verloren geht. bookery erinnert dich ab und zu daran.</p></div></li>
         <li class="more"><div class="mini mini-more" aria-hidden="true"><span>+</span></div><div><h3>Weitere Funktionen kommen dazu</h3><p>Du gestaltest mit: Sag über „Feedback“ in der App, was dir beim Lesen fehlt.</p></div></li>
       </ul>
     </div>
@@ -635,39 +637,38 @@ footer small { color: var(--muted); }
     </div>
   </section>
 
-  <section class="section" id="testen">
+  <section class="section" id="preis">
     <div class="wrap">
-      <div class="signup reveal">
-        <div class="signup-text">
-          <span class="eyebrow">Beta-Test</span>
-          <h2>Gestalte <em>mit.</em></h2>
-          <p>Die Beta von bookery läuft gerade. Gib deine E-Mail-Adresse ein, und du bekommst eine Einladung von Apple für TestFlight, die Test-App für das iPhone. Kostenlos und ohne Verpflichtung.</p>
+      <div class="price reveal">
+        <div class="price-text">
+          <span class="eyebrow">Preis</span>
+          <h2>Erst lesen,<br><em>dann entscheiden.</em></h2>
+          <p>14 Tage lang ist in bookery alles frei – ohne Konto und ohne Zahlungsdaten. Gefällt dir die App, schaltest du sie mit einem einmaligen Kauf für immer frei. Kein Abo, keine Werbung.</p>
+          <div class="get">
+            <a class="asb" href="https://apps.apple.com/app/id6819163618" aria-label="bookery im App Store laden"><svg class="asb-logo" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg><span><small>Laden im</small><b>App Store</b></span></a>
+            <div class="qr-mini"><img src="qr-bookery.svg" width="37" height="37" alt="QR-Code: bookery im App Store"><span>Mit dem iPhone<br>scannen</span></div>
+          </div>
         </div>
-        <form class="signup-form" id="signup" action="/api/testen" method="post" novalidate>
-          <div class="form-head">
-            <span class="live-tag"><i aria-hidden="true"></i>Live</span>
-            <h3>Anmeldung zur Beta</h3>
+        <div class="price-card">
+          <div class="price-head">
+            <b>2,99 €</b>
+            <span>einmalig, nach 14 Tagen gratis<br>mit Familienfreigabe</span>
           </div>
-          <label for="signup-email">Deine E-Mail-Adresse</label>
-          <div class="field">
-            <input id="signup-email" name="email" type="email" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false"
-              placeholder="name@beispiel.de" required maxlength="254">
-            <button class="button" type="submit"><span>Zur Beta anmelden</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-          </div>
-          <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <input type="hidden" name="lang" value="de">
-          <p class="note" id="signup-note" aria-live="polite">Kein Newsletter, kein Konto. Die Adresse nutze ich nur für die Einladung. <a href="testen/">Anleitung</a></p>
-          <div class="done" id="signup-done" hidden>
-            <a class="button" href="testen/"><span>Zur Anleitung</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          </div>
-        </form>
-      </div>
-      <div class="steps">
-        <div class="step reveal"><h3>Adresse eintragen</h3><p>Ein Feld, ein Tipp – mehr braucht es nicht.</p></div>
-        <div class="step reveal" style="--d:100ms"><h3>Einladung annehmen</h3><p>Die Mail von Apple auf dem iPhone öffnen und „Testen beginnen“ tippen.</p></div>
-        <div class="step reveal" style="--d:200ms"><h3>Loslesen</h3><p>bookery über TestFlight installieren – Updates kommen automatisch.</p></div>
+          <table class="compare">
+            <thead><tr><td></td><th scope="col">Ohne Kauf</th><th scope="col">Mit Kauf</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Bücher ansehen und bearbeiten</th><td><svg class="yes" viewBox="0 0 24 24" aria-label="ja"><path d="m5 12 5 5 9-10"/></svg></td><td><svg class="yes" viewBox="0 0 24 24" aria-label="ja"><path d="m5 12 5 5 9-10"/></svg></td></tr>
+              <tr><th scope="row">Backup</th><td><svg class="yes" viewBox="0 0 24 24" aria-label="ja"><path d="m5 12 5 5 9-10"/></svg></td><td><svg class="yes" viewBox="0 0 24 24" aria-label="ja"><path d="m5 12 5 5 9-10"/></svg></td></tr>
+              <tr><th scope="row">Neue Bücher hinzufügen</th><td><svg class="no" viewBox="0 0 24 24" aria-label="nein"><path d="M7 12h10"/></svg></td><td><svg class="yes" viewBox="0 0 24 24" aria-label="ja"><path d="m5 12 5 5 9-10"/></svg></td></tr>
+              <tr><th scope="row">Lesesitzungen</th><td><svg class="no" viewBox="0 0 24 24" aria-label="nein"><path d="M7 12h10"/></svg></td><td><svg class="yes" viewBox="0 0 24 24" aria-label="ja"><path d="m5 12 5 5 9-10"/></svg></td></tr>
+              <tr><th scope="row">Dein Lesejahr</th><td><svg class="no" viewBox="0 0 24 24" aria-label="nein"><path d="M7 12h10"/></svg></td><td><svg class="yes" viewBox="0 0 24 24" aria-label="ja"><path d="m5 12 5 5 9-10"/></svg></td></tr>
+              <tr><th scope="row">Kosten und Wert</th><td><svg class="no" viewBox="0 0 24 24" aria-label="nein"><path d="M7 12h10"/></svg></td><td><svg class="yes" viewBox="0 0 24 24" aria-label="ja"><path d="m5 12 5 5 9-10"/></svg></td></tr>
+              <tr><th scope="row">Reihen in der Suche</th><td><svg class="no" viewBox="0 0 24 24" aria-label="nein"><path d="M7 12h10"/></svg></td><td><svg class="yes" viewBox="0 0 24 24" aria-label="ja"><path d="m5 12 5 5 9-10"/></svg></td></tr>
+              <tr><th scope="row">Weitere Regale</th><td><svg class="no" viewBox="0 0 24 24" aria-label="nein"><path d="M7 12h10"/></svg></td><td><svg class="yes" viewBox="0 0 24 24" aria-label="ja"><path d="m5 12 5 5 9-10"/></svg></td></tr>
+            </tbody>
+          </table>
+          <p class="note">Deine Bücher bleiben immer lesbar, bearbeitbar und lassen sich sichern. Kaufen, wiederherstellen oder einen Code einlösen: Einstellungen → „bookery freischalten“.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -680,6 +681,14 @@ footer small { color: var(--muted); }
       </div>
       <div class="faq reveal">
         <details>
+          <summary>Was kostet bookery?</summary>
+          <p>Laden ist kostenlos, und 14 Tage lang kannst du alles nutzen. Danach schaltest du bookery mit einem einmaligen Kauf von 2,99 € frei – kein Abo, keine Werbung. Über die Familienfreigabe gilt der Kauf auch für deine Familie.</p>
+        </details>
+        <details>
+          <summary>Was passiert nach den 14 Tagen, wenn ich nicht kaufe?</summary>
+          <p>Deine Bücher bleiben: Du kannst sie weiter ansehen, Lesestand, Bewertungen und Notizen ändern und ein Backup machen. Neue Bücher hinzufügen, Lesesitzungen, dein Lesejahr, Kosten, Reihen als Ordner und weitere Regale gibt es dann nur mit dem Kauf.</p>
+        </details>
+        <details>
           <summary>Wo liegen meine Bücher?</summary>
           <p>Nur auf deinem iPhone. Es gibt kein Konto, und deine Bücher landen auf keinem Server von bookery – wir sehen sie nicht. Gesichert werden sie mit dem iCloud- oder Computer-Backup deines iPhones.</p>
         </details>
@@ -688,8 +697,8 @@ footer small { color: var(--muted); }
           <p>Entweder über das normale iPhone-Backup, oder in bookery unter Einstellungen → „Backup exportieren“. Die Datei z. B. in iCloud Drive ablegen und auf dem neuen iPhone mit „Backup einspielen“ zurückholen.</p>
         </details>
         <details>
-          <summary>Ich komme von Bookie oder Goodreads. Kann ich meine Bücher mitnehmen?</summary>
-          <p>Ja. Exportiere deine Bibliothek als CSV-Datei – bei Goodreads im Browser unter „Import and export“ – und wähle in bookery „Bücher aus Bookie holen“ bzw. „Bücher aus Goodreads holen“. Du findest das auf der Startseite und in den Einstellungen unter „Von anderer App wechseln“.</p>
+          <summary>Ich komme von Bookie, Goodreads oder Kindle. Kann ich meine Bücher mitnehmen?</summary>
+          <p>Ja. Exportiere deine Bibliothek als CSV-Datei – bei Goodreads im Browser unter „Import and export“ – und wähle in bookery „Bücher aus Bookie holen“ bzw. „Bücher aus Goodreads holen“. Für Kindle forderst du bei Amazon unter „Meine Daten anfordern“ deine Kindle-Daten an und wählst „Bücher aus Kindle holen“. Du findest das auf der Startseite und in den Einstellungen unter „Von anderer App wechseln“.</p>
         </details>
         <details>
           <summary>Die Buchsuche findet mein Buch nicht.</summary>
@@ -700,8 +709,12 @@ footer small { color: var(--muted); }
           <p>In bookery unter Einstellungen → „Alle Daten löschen“, oder indem du die App löschst. Da alles nur auf deinem iPhone liegt, ist danach nichts mehr übrig.</p>
         </details>
         <details>
-          <summary>Kostet bookery etwas?</summary>
-          <p>Nein. Keine Käufe in der App, kein Abo, keine Werbung.</p>
+          <summary>Wie nehme ich den Kauf auf ein neues iPhone mit?</summary>
+          <p>Mit derselben Apple-ID in bookery unter Einstellungen → „bookery freischalten“ → „Käufe wiederherstellen“ tippen. Du zahlst nur einmal.</p>
+        </details>
+        <details>
+          <summary>Ich war bei der Beta dabei. Was jetzt?</summary>
+          <p>Danke fürs Mittesten! Exportier zur Sicherheit ein Backup (Einstellungen → „Backup exportieren“) und lade bookery dann aus dem App Store – deine Bücher bleiben erhalten. Mit dem Code aus meiner Mail schaltest du bookery unter Einstellungen → „bookery freischalten“ → „Code einlösen“ kostenlos frei.</p>
         </details>
       </div>
     </div>
@@ -723,7 +736,6 @@ footer small { color: var(--muted); }
   <div class="wrap">
     <a class="brand" href="./" style="margin-right:0"><img class="app-icon" src="icons/sage.png" alt="" width="34" height="34">bookery</a>
     <nav aria-label="Seiten">
-      <a href="testen/">Anleitung für Tester</a>
       <a href="kontakt.html">Kontakt</a>
       <a href="datenschutz.html">Datenschutz</a>
       <a href="impressum.html">Impressum</a>

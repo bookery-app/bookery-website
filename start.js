@@ -39,7 +39,7 @@
   const onScroll = () => nav.classList.toggle('scrolled', scrollY > 8);
   addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
-  // Kommt man von außen mit #testen o. ä. herein, springt Safari ohne scroll-padding-top
+  // Kommt man von außen mit #preis o. ä. herein, springt Safari ohne scroll-padding-top
   // und der Abschnitt rutscht unter die Kopfzeile. Nach dem Laden einmal genau hinscrollen,
   // außer man hat schon selbst gescrollt.
   const target = location.hash.length > 1 && document.getElementById(decodeURIComponent(location.hash.slice(1)));
@@ -68,44 +68,6 @@
   } else {
     document.querySelectorAll('.reveal, #shelf').forEach(show);
   }
-
-  // Anmeldung zum Testen: Adresse an den Server, der sie an den Support mailt.
-  // Klappt das nicht, öffnet sich eine vorbereitete Mail als Ausweg.
-  const form = document.getElementById('signup');
-  const input = document.getElementById('signup-email');
-  const note = document.getElementById('signup-note');
-  const noteText = note.innerHTML;
-  const button = form.querySelector('button');
-  const mailto = addr => 'mailto:info@bookery-app.de?subject=' + encodeURIComponent('Ich möchte bookery testen') +
-    '&body=' + encodeURIComponent('Hallo,\n\nich würde bookery gerne testen. Bitte lade mich über TestFlight ein' + (addr ? ' (' + addr + ')' : '') + '.\n\nDanke!');
-  const fail = html => { note.innerHTML = html; note.classList.add('error'); };
-  document.querySelectorAll('[data-focus-signup]').forEach(a => a.addEventListener('click', () => setTimeout(() => input.focus({ preventScroll: true }), 500)));
-  input.addEventListener('input', () => { input.removeAttribute('aria-invalid'); note.classList.remove('error'); note.innerHTML = noteText; });
-  form.addEventListener('submit', async ev => {
-    ev.preventDefault();
-    const addr = input.value.trim();
-    if (!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(addr)) {
-      input.setAttribute('aria-invalid', 'true'); input.focus();
-      return fail('Das sieht noch nicht nach einer E-Mail-Adresse aus.');
-    }
-    button.disabled = true;
-    button.querySelector('span').textContent = 'Wird gesendet …';
-    try {
-      const res = await fetch(form.action, { method: 'POST', body: new URLSearchParams(new FormData(form)) });
-      if (res.status === 429) throw new Error('limit');
-      if (!res.ok) throw new Error('server');
-      form.classList.add('sent');
-      document.getElementById('signup-done').hidden = false;
-      location.assign('testen/?danke');
-    } catch (e) {
-      fail(e.message === 'limit'
-        ? 'Gerade kamen sehr viele Anfragen. Versuch es später noch einmal oder <a href="' + mailto(addr) + '">schreib mir direkt</a>.'
-        : 'Das hat gerade nicht geklappt. <a href="' + mailto(addr) + '">Per E-Mail anfragen</a> – die Nachricht ist schon vorbereitet.');
-    } finally {
-      button.disabled = false;
-      button.querySelector('span').textContent = 'Zur Beta anmelden';
-    }
-  });
 
   // Galerie: Pfeile blättern um ein Telefon.
   const gallery = document.getElementById('gallery');
